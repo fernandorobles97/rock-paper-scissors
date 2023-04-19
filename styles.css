@@ -1,0 +1,71 @@
+* {
+  font-family: 'Kanit', sans-serif;
+  color: white;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(228, 91, 91);
+  display: flex;
+}
+
+main {
+  height: 100vh;
+  width: 70vw;
+  background-color: rgb(184, 62, 62);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+h1 {
+  font-size: 7em;
+  font-weight: 800;
+  margin-bottom: 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+h2 {
+  font-size: 3em;
+  font-weight: 300;
+  display: flex;
+  text-align: center;
+}
+
+h2.choose {
+  margin-top: 0;
+}
+
+.human {
+  height: 100vh;
+  width: 15vw;
+  background-color: rgb(228, 91, 91);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.human-wins {
+  font-size: 2.5em;
+}
+
+.computer {
+  height: 100vh;
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.computer-wins {
+  font-size: 2.5em;
+}

@@ -1,0 +1,112 @@
+* {
+  font-family: 'Kanit', sans-serif;
+  color: white;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(228, 91, 91);
+  display: flex;
+}
+
+main {
+  height: 100vh;
+  width: 70vw;
+  background-color: rgb(231, 72, 72);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+h1 {
+  font-size: 7em;
+  font-weight: 800;
+  margin-bottom: 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+h2 {
+  font-size: 3.5em;
+  font-weight: 600;
+  margin-top: 60px;
+  display: flex;
+  text-align: center;
+}
+
+h2.choose {
+  font-weight: 300;
+  margin-top: 0;
+}
+
+.buttons {
+  height: 50%;
+  width: 30%;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.buttons__classic, .buttons__difficult {
+  height: 10em;
+  background-color: rgb(173, 50, 50);
+  font-size: 2em;
+  font-weight: 300;
+  border: 0;
+  cursor: pointer;
+}
+
+.buttons__difficult {
+  margin-top: 40px;
+}
+
+.human {
+  height: 100vh;
+  width: 15vw;
+  background-color: rgb(228, 91, 91);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.human__wins {
+  font-size: 2.5em;
+  margin-top: 0;
+  margin-bottom: 100px;
+}
+
+.human__button {
+  height: 7vh;
+  width: 13vw;
+  background-color: rgb(173, 50, 50);
+  font-size: 1.5em;
+  font-weight: 300;
+  border: 0;
+  cursor: pointer;
+}
+
+.computer {
+  height: 100vh;
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.computer__wins {
+  font-size: 2.5em;
+  margin-top: 0;
+}
+
+.hidden {
+  display: none;
+}

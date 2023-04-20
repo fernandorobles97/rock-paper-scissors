@@ -1,13 +1,24 @@
 // Data Model ideas: 
   // game board data
   // game type logic
+  // var gameTypes = [classic]
+  // var classicGameRules = [];
+  // var difficultGameRules = [];
+  // var classicGameBoard = [];
 
 // ** DATA MODEL ** //
+var classicLogic = {
+  rock: 'scissors',
+  paper: 'rock',
+  scissors: 'paper'
+}
+
 var fighters = ['rock', 'paper', 'scissors'];
-// // var gameTypes = [classic]
-// var classicGameRules = [];
-// var difficultGameRules = [];
-// var classicGameBoard = [];
+
+var game = {
+  players: [],
+  gameLogic: "", 
+}
 
 // ** PLAYERS ** //
 var human = createPlayer('human', '🤠', 0)
@@ -34,32 +45,36 @@ function takeTurn(player, choice) {
   }
 }
 
-function determineClassicWinner(player1, player2) {
-  if (player1.fighter === player2.fighter) {
-    return 'It\' a draw'
-  } else if (player1.fighter === 'rock') {
-      if(player2.fighter === 'scissors') {
-        player1.wins ++;
-      } else {
-        player2.wins ++;
-      } 
-  } else if (player1.fighter === 'scissors') {
-      if (player2.fighter === 'paper') {
-        player1.wins ++;
-      } else {
-        player2.wins ++;
-      }
-  } else if (player1.fighter === 'paper')
-      if (player2.fighter === 'rock') {
-        player1.wins ++;
-      } else {
-        player2.wins ++;
-      }
+function computerTurn() {
+  var random = fighters[getRandomIndex(fighters)];
+  computer.fighter = random;
+  return computer.fighter;
 }
 
-// console.log(takeTurn(human, 'paper'))
-// console.log(takeTurn(computer, 'paper'))
-// console.log('game1', determineClassicWinner(human, computer))
-// console.log('game2', determineClassicWinner(computer, human))
-// console.log(human);
-// console.log(computer)
+takeTurn(human, 'paper')
+
+function determineClassicWinner(player, computer) {
+  var hum = player.fighter
+  if (hum === computerTurn()) {
+    return `It\'s a draw`;
+  // function that would render its a draw on dom
+  } else if (classicLogic[hum] === computerTurn()) {
+    player.wins ++;
+    return player
+  } else {
+    computer.wins ++;
+    return computer
+  }
+}
+
+console.log(determineClassicWinner(human, computer))
+console.log(determineClassicWinner(human, computer))
+
+
+function createGame(player1, player2, gameLogic) {
+  var game = {
+    players: [player1, player2],
+    gameLogic: gameLogic,
+  };
+  return game
+}

@@ -1,29 +1,29 @@
-// Data Model ideas: 
-  // game board data
-  // game type logic
-  // var gameTypes = [classic]
-  // var classicGameRules = [];
-  // var difficultGameRules = [];
-  // var classicGameBoard = [];
+// ** PLAYERS ** //
+var human = createPlayer('human', '🤠', 0);
+var computer = createPlayer('computer', '💻', 0);
 
 // ** DATA MODEL ** //
+var humanScore = human.wins;
+var computerScore = computer.wins;
+var classicFighters = ['rock', 'paper', 'scissors'];
+var difficultFighters = ['rock', 'paper', 'scissors', 'alien', 'lizard'];
 var classicLogic = {
   rock: 'scissors',
   paper: 'rock',
   scissors: 'paper'
-}
-
-var fighters = ['rock', 'paper', 'scissors'];
-
+};
+var difficultLogic = {
+  rock: ['scissors', 'lizard'],
+  paper: ['rock', 'alien'],
+  scissors: ['rock', 'alien'],
+  lizard: ['paper', 'alien'],
+  alien: ['scissors', 'rock']
+};
 var game = {
   players: [],
   fighters: [],
   gameType: '' 
-}
-
-// ** PLAYERS ** //
-var human = createPlayer('human', '🤠', 0)
-var computer = createPlayer('computer', '💻', 0)
+};
 
 // ** FUNCTIONS ** //
 function getRandomIndex(array) {
@@ -38,49 +38,53 @@ function createPlayer(name, token, wins) {
   };
 }
 
-function takeTurn(player, choice) {
+function takeTurn(fighters, choice) {
   for (var i = 0; i < fighters.length; i++) {
     if (fighters[i] === choice) {
-      return player.fighter = choice;
+      return human.fighter = choice;
     }
   }
 }
 
-function computerTurn() {
+function computerTurn(fighters) {
   var random = fighters[getRandomIndex(fighters)];
   computer.fighter = random;
   return computer.fighter;
 }
 
-takeTurn(human, 'paper')
-
-function createGame(guys, gameType) {
+function createGame(fighters, gameType) {
   game = {
     players: [human, computer],
-    fighters: guys,
+    fighters: fighters,
     gameType: gameType
   }
   return game;
 }
 
 function determineClassicWinner(player, computer) {
-  var hum = player.fighter
-  if (hum === computerTurn()) {
+  var hum = player.fighter;
+  var com = computerTurn(classicFighters);
+  if (hum === com) {
     return `It\'s a draw`;
-  // function that would render its a draw on dom
-  } else if (classicLogic[hum] === computerTurn()) {
+  } else if (classicLogic[hum] === com) {
     player.wins ++;
-    return player
+    humanScore ++;
   } else {
     computer.wins ++;
-    return computer
+    computerScore++;
   }
 }
 
-console.log(determineClassicWinner(human, computer))
-console.log(determineClassicWinner(human, computer))
-
-
-createGame(fighters, classicLogic)
-
-console.log(game);
+function determineDifficultWinner(player, computer) {
+  var hum = player.fighter;
+  var com = computerTurn(difficultFighters);
+  if (hum === com) {
+    return `It\'s a draw`;
+  } else if (com === difficultLogic[hum][0] || difficultLogic[hum][1] === com) {
+    player.wins ++;
+    humanScore ++;
+  } else {
+    computer.wins ++;
+    computerScore ++;
+  }
+}

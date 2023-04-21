@@ -17,7 +17,8 @@ var fighters = ['rock', 'paper', 'scissors'];
 
 var game = {
   players: [],
-  gameLogic: "", 
+  fighters: [],
+  gameType: '' 
 }
 
 // ** PLAYERS ** //
@@ -53,6 +54,15 @@ function computerTurn() {
 
 takeTurn(human, 'paper')
 
+function createGame(guys, gameType) {
+  game = {
+    players: [human, computer],
+    fighters: guys,
+    gameType: gameType
+  }
+  return game;
+}
+
 function determineClassicWinner(player, computer) {
   var hum = player.fighter
   if (hum === computerTurn()) {
@@ -71,10 +81,6 @@ console.log(determineClassicWinner(human, computer))
 console.log(determineClassicWinner(human, computer))
 
 
-function createGame(player1, player2, gameLogic) {
-  var game = {
-    players: [player1, player2],
-    gameLogic: gameLogic,
-  };
-  return game
-}
+createGame(fighters, classicLogic)
+
+console.log(game);

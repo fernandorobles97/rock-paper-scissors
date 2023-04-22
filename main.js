@@ -34,9 +34,13 @@ var buttonsSection = document.querySelector('.buttons__view')
 var choiceAndWinner = document.querySelector('.choose')
 
 // ** EVENT LISTENERS ** //
-classicButton.addEventListener('click', displayClassicFighters);
-difficultButton.addEventListener('click', displayDifficultFighters);
 changeButton.addEventListener('click', switchHomeView);
+
+buttonsSection.addEventListener('click', function(event) {
+  if (event.target.classList.contains('buttons__classic') || event.target.classList.contains('buttons__difficult')) {
+    createGame(event.target);
+  }
+});
 
 // ** FUNCTIONS ** //
 function getRandomIndex(array) {
@@ -65,13 +69,22 @@ function computerTurn(fighters) {
   return computer.fighter;
 }
 
-function createGame(fighters, gameType) {
-  game = {
-    players: [human, computer],
-    fighters: fighters,
-    gameType: gameType
+function createGame(element) {
+  if (element.classList.contains('buttons__classic')) {
+    game = {
+      players: [human, computer],
+      fighters: classicFighters,
+      gameType: classicLogic
+    } 
+    displayClassicFighters();
+  } else {
+      game = {
+        players: [human, computer],
+        fighters: difficultFighters,
+        gameType: difficultLogic
+      }
+      displayDifficultFighters();
   }
-  return game;
 }
 
 function determineClassicWinner(player, computer) {

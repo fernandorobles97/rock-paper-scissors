@@ -45,7 +45,7 @@ h2.choose {
   margin-top: 0;
 }
 
-.buttons {
+.buttons__view {
   height: 50%;
   width: 30%;
   margin-top: 100px;
@@ -105,6 +105,18 @@ h2.choose {
 .computer__wins {
   font-size: 2.5em;
   margin-top: 0;
+}
+
+.gameboard {
+  width: 5vw;
+  margin-top: 10vw;
+  display: flex;
+  justify-content: center;
+}
+
+.fighter {
+  height: 25vh;
+  cursor: pointer;
 }
 
 .hidden {

@@ -25,6 +25,15 @@ var game = {
   gameType: '' 
 };
 
+// ** DOM ELEMENTS ** //
+var classicButton = document.querySelector('.buttons__classic')
+var gameboardSection = document.querySelector('.gameboard__view')
+var buttonsSection = document.querySelector('.buttons__view')
+var choiceAndWinner = document.querySelector('.choose')
+
+// ** EVENT LISTENERS ** //
+classicButton.addEventListener('click', displayClassicFighters);
+
 // ** FUNCTIONS ** //
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -88,3 +97,29 @@ function determineDifficultWinner(player, computer) {
     computerScore ++;
   }
 }
+
+function removeHiddenClass(elements) {
+  for (var i=0; i < elements.length; i++){
+    elements[i].classList.remove('hidden')
+  }
+}
+
+function addHiddenClass(elements) {
+  for (var i=0; i < elements.length; i++){
+    elements[i].classList.add('hidden')
+  }
+}
+
+// when classic button is clicked
+  // a new function should display the 3 fighters and hide the buttons section
+  function displayClassicFighters() {
+    addHiddenClass([buttonsSection]);
+    removeHiddenClass([gameboardSection])
+    choiceAndWinner.innerHTML = 'Choose your fighter!'
+    gameboardSection.innerHTML = `
+      <section class="gameboard">
+        <img alt="rock" src ="./assets/happy-rocks.png" class="fighter">
+        <img alt="paper"src ="./assets/happy-paper.png" class="fighter">
+        <img alt="scissors" src ="./assets/happy-scissors.png" class="fighter">
+      </section`
+  }

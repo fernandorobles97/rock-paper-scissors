@@ -25,6 +25,19 @@ var game = {
   gameType: '' 
 };
 
+// ** DOM ELEMENTS ** //
+var classicButton = document.querySelector('.buttons__classic')
+var difficultButton = document.querySelector('.buttons__difficult')
+var changeButton = document.querySelector('.human__button')
+var gameboardSection = document.querySelector('.gameboard__view')
+var buttonsSection = document.querySelector('.buttons__view')
+var choiceAndWinner = document.querySelector('.choose')
+
+// ** EVENT LISTENERS ** //
+classicButton.addEventListener('click', displayClassicFighters);
+difficultButton.addEventListener('click', displayDifficultFighters);
+changeButton.addEventListener('click', switchHomeView);
+
 // ** FUNCTIONS ** //
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -87,4 +100,50 @@ function determineDifficultWinner(player, computer) {
     computer.wins ++;
     computerScore ++;
   }
+}
+
+function removeHiddenClass(elements) {
+  for (var i=0; i < elements.length; i++){
+    elements[i].classList.remove('hidden')
+  }
+}
+
+function addHiddenClass(elements) {
+  for (var i=0; i < elements.length; i++){
+    elements[i].classList.add('hidden')
+  }
+}
+
+function displayClassicFighters() {
+  addHiddenClass([buttonsSection]);
+  removeHiddenClass([gameboardSection, changeButton])
+  choiceAndWinner.innerHTML = 'Choose your fighter!'
+  gameboardSection.innerHTML = `
+    <section class="gameboard__classic">
+      <img alt="rock" src ="./assets/happy-rocks.png" class="fighter">
+      <img alt="paper"src ="./assets/happy-paper.png" class="fighter">
+      <img alt="scissors" src ="./assets/happy-scissors.png" class="fighter">
+    </section>`
+}
+
+function switchHomeView() {
+  choiceAndWinner.innerHTML = 'Choose your game!';
+  addHiddenClass([gameboardSection, changeButton]);
+  removeHiddenClass([buttonsSection]);
+}
+
+function displayDifficultFighters() {
+  addHiddenClass([buttonsSection]);
+  removeHiddenClass([gameboardSection, changeButton])
+  choiceAndWinner.innerHTML = 'Choose your fighter!'
+  gameboardSection.innerHTML = ` 
+    <div class="fighters-top"> 
+      <img alt="rock" src ="./assets/happy-rocks.png" class="fighter">
+      <img alt="paper" src = "./assets/happy-paper.png" class="fighter">
+      <img alt="scissors" src = "./assets/happy-scissors.png" class="fighter">
+    </div>
+    <div class="fighters-bottom">  
+      <img alt="alien" src = "./assets/flat-alien.png" class="fighter">
+      <img alt="lizard" src = "./assets/lizard.png" class="fighter">
+    </div>`
 }

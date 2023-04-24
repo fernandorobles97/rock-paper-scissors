@@ -24,6 +24,7 @@ var game = {
   fighters: [],
   gameType: '' 
 };
+var fighterAttributes = [{alt:"rock", src:"./assets/happy-rocks.png"}, {alt:"paper", src:"./assets/happy-paper.png"}, {alt:'scissors', src:"./assets/happy-scissors.png"}, {alt:"alien", src:"./assets/flat-alien.png"}, {alt:"lizard", src:"./assets/lizard.png"}];
 
 // ** DOM ELEMENTS ** //
 var classicButton = document.querySelector('.buttons__classic')
@@ -46,18 +47,7 @@ gameboardSection.addEventListener('click', function(event) {
   if (event.target.classList.contains('classic') || event.target.classList.contains('difficult')) {
     displayMatch(event)
   }
-})
-
-function displayMatch(element) {
-  console.log(element.target.alt)
-  var selectedFighter = []
-  selectedFighter.push(element.target)
-  for (var i=0; i < selectedFighter.length; i++)
-  gameboardSection.innerHTML = `
-  <section class="gameboard__results">
-    <img alt="${selectedFighter[i].alt}" src ="${selectedFighter[i].src}" class="fighter classic">
-  </section>`
-}
+});
 
 // ** FUNCTIONS ** //
 function getRandomIndex(array) {
@@ -111,10 +101,10 @@ function determineClassicWinner(player, computer) {
     return `It\'s a draw`;
   } else if (classicLogic[hum] === com) {
     player.wins ++;
-    humanScore ++;
+    return player;
   } else {
     computer.wins ++;
-    computerScore++;
+    return computer;
   }
 }
 
@@ -125,10 +115,10 @@ function determineDifficultWinner(player, computer) {
     return `It\'s a draw`;
   } else if (com === difficultLogic[hum][0] || difficultLogic[hum][1] === com) {
     player.wins ++;
-    humanScore ++;
+    return player;
   } else {
     computer.wins ++;
-    computerScore ++;
+    return computer;
   }
 }
 
@@ -176,4 +166,33 @@ function displayDifficultFighters() {
       <img alt="alien" src = "./assets/flat-alien.png" class="fighter difficult">
       <img alt="lizard" src = "./assets/lizard.png" class="fighter difficult">
     </div>`
+}
+
+function determineMatch() {
+  if (game.gameType === classicLogic) {
+    return winner = determineClassicWinner(human, computer)
+  } else {
+    return winner = determineDifficultWinner(human, computer)
+  }
+}
+
+function displayMatch(element) {
+  if (element.target.classList.contains('classic')) {
+    takeTurn(classicFighters, element.target.alt);
+  } else {
+    takeTurn(difficultFighters, element.target.alt);
+  }
+  determineMatch();
+  var selectedFighter = [];
+  selectedFighter.push(element.target);
+  for (var i=0; i < fighterAttributes.length; i++) {
+    if (computer.fighter === fighterAttributes[i].alt) {
+      selectedFighter.push(fighterAttributes[i]);
+    }
+  }
+  gameboardSection.innerHTML = `
+  <section class="gameboard__classic">
+    <img alt="${selectedFighter[0].alt}" src ="${selectedFighter[0].src}" class="fighter">
+    <img alt="${selectedFighter[1].alt}" src ="${selectedFighter[1].src}" class="fighter">
+  </section>`
 }

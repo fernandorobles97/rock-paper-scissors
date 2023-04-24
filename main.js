@@ -186,6 +186,7 @@ function displayMatch(element) {
   }
   determineMatch();
   updateWinnerScore();
+  updateHeader();
   var selectedFighter = [];
   selectedFighter.push(element.target);
   for (var i=0; i < fighterAttributes.length; i++) {
@@ -207,7 +208,15 @@ function updateWinnerScore() {
   } else if (winner === computer) {
     computerScore += 1;
     computerWins.innerHTML = `<i>Wins: ${computerScore}</i>`
-  } else {
+  } 
+}
+
+function updateHeader() {
+  if (winner === `It\'s a draw`) {
     choiceAndWinner.innerHTML = 'It\'s a draw!'
+  } else if (winner === human) {
+    choiceAndWinner.innerHTML = '🤠 Human won this Round! 🤠'
+  } else {
+    choiceAndWinner.innerHTML = '💻 Computer won this Round! 💻'
   }
 }

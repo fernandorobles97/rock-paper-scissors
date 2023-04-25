@@ -41,7 +41,7 @@ changeButton.addEventListener('click', switchHomeView);
 
 buttonsSection.addEventListener('click', function(event) {
   if (event.target.classList.contains('buttons__classic') || event.target.classList.contains('buttons__difficult')) {
-    createGame(event.target);
+    displayGame(event.target);
   }
 });
 
@@ -64,6 +64,14 @@ function createPlayer(name, token, wins) {
   };
 }
 
+function createGame(player1, player2, fighters, gameType) {
+  return game = {
+    players: [player1, player2],
+    fighters: fighters,
+    gameType: gameType
+  };
+}
+
 function takeTurn(fighters, choice) {
   for (var i = 0; i < fighters.length; i++) {
     if (fighters[i] === choice) {
@@ -78,21 +86,13 @@ function computerTurn(fighters) {
   return computer.fighter;
 }
 
-function createGame(element) {
+function displayGame(element) {
   if (element.classList.contains('buttons__classic')) {
-    game = {
-      players: [human, computer],
-      fighters: classicFighters,
-      gameType: classicLogic
-    } 
+    createGame(human, computer, classicFighters, classicLogic);
     displayClassicFighters();
   } else {
-      game = {
-        players: [human, computer],
-        fighters: difficultFighters,
-        gameType: difficultLogic
-      }
-      displayDifficultFighters();
+    createGame(human, computer, difficultFighters, difficultLogic);
+    displayDifficultFighters();
   }
 }
 

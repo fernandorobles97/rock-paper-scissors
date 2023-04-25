@@ -24,7 +24,13 @@ var game = {
   fighters: [],
   gameType: '' 
 };
-var fighterAttributes = [{alt:"rock", src:"./assets/happy-rocks.png"}, {alt:"paper", src:"./assets/happy-paper.png"}, {alt:'scissors', src:"./assets/happy-scissors.png"}, {alt:"alien", src:"./assets/flat-alien.png"}, {alt:"lizard", src:"./assets/lizard.png"}];
+var fighterAttributes = [
+  {alt:"rock", src:"./assets/happy-rocks.png"},
+  {alt:"paper", src:"./assets/happy-paper.png"}, 
+  {alt:'scissors', src:"./assets/happy-scissors.png"}, 
+  {alt:"alien", src:"./assets/flat-alien.png"}, 
+  {alt:"lizard", src:"./assets/lizard.png"}
+];
 
 // ** DOM ELEMENTS ** //
 var classicButton = document.querySelector('.buttons__classic')

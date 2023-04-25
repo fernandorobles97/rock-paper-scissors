@@ -7,18 +7,20 @@ html {
   font-size: 62.5%;
 }
 
+body, main, h2, .buttons__view, .human, .computer, .gameboard__view, .gameboard__classic, .gameboard__difficult, .fighters-top, .fighters-bottom {
+  display: flex;
+}
+
 body {
   height: 100vh;
   width: 100vw;
   background-color: rgb(228, 91, 91);
-  display: flex;
 }
 
 main {
   height: 100vh;
   width: 70vw;
   background-color: rgb(231, 72, 72);
-  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -36,7 +38,6 @@ h2 {
   font-size: 3.5em;
   font-weight: 600;
   margin-top: 60px;
-  display: flex;
   text-align: center;
 }
 
@@ -49,7 +50,6 @@ h2.choose {
   height: 50%;
   width: 30%;
   margin-top: 100px;
-  display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -83,7 +83,6 @@ h3, p {
   height: 100vh;
   width: 15vw;
   background-color: rgb(228, 91, 91);
-  display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
@@ -116,7 +115,6 @@ h3, p {
 .computer {
   height: 100vh;
   width: 15vw;
-  display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
@@ -129,7 +127,6 @@ h3, p {
 
 .gameboard__view { 
   width: 5vw;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -138,28 +135,24 @@ h3, p {
 .gameboard__classic {
   width: 50vw;
   margin-top: 10vw;
-  display: flex;
   justify-content: space-around;
 }
 
 .gameboard__difficult {
   width: 55vw;
   margin-top: 10vw;
-  display: flex;
   justify-content: space-around;
 }
 
 .fighters-top {
   width: 50vw;
   margin-top: 10vh;
-  display: flex;
   justify-content: space-around;
 }
 
 .fighters-bottom {
   width: 35vw;
   margin-top: 5vh;
-  display: flex;
   justify-content: space-around;
 }
 

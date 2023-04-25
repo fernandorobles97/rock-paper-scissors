@@ -181,8 +181,10 @@ function determineMatch() {
 function displayMatch(element) {
   if (element.target.classList.contains('classic')) {
     takeTurn(classicFighters, element.target.alt);
+    setTimeout(displayClassicFighters, 2500);
   } else {
     takeTurn(difficultFighters, element.target.alt);
+    setTimeout(displayDifficultFighters, 2500);
   }
   determineMatch();
   updateWinnerScore();

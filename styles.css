@@ -58,6 +58,10 @@ button > * {
   pointer-events: none;
 }
 
+.buttons__classic:hover, .buttons__difficult:hover, .human__button:hover {
+  background-color: rgb(109, 0, 0);
+}
+
 .buttons__classic, .buttons__difficult {
   height: 10em;
   background-color: rgb(173, 50, 50);

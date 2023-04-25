@@ -1,3 +1,4 @@
+/* GENERAL */
 * {
   font-family: 'Kanit', sans-serif;
   color: white;
@@ -16,6 +17,8 @@ body {
   width: 100vw;
   background-color: rgb(228, 91, 91);
 }
+
+/* MAIN SECTION */
 
 main {
   height: 100vh;
@@ -45,6 +48,8 @@ h2.choose {
   font-weight: 300;
   margin-top: 0;
 }
+
+/* BUTTONS SECTION */
 
 .buttons__view {
   height: 50%;
@@ -79,6 +84,8 @@ h3, p {
   margin-top: 40px;
 }
 
+/* HUMAN SECTION */
+
 .human {
   height: 100vh;
   width: 15vw;
@@ -112,6 +119,8 @@ h3, p {
   margin-bottom: 0;
 }
 
+/* COMPUTER SECTION */
+
 .computer {
   height: 100vh;
   width: 15vw;
@@ -124,6 +133,8 @@ h3, p {
   font-size: 2.5em;
   margin-top: 0;
 }
+
+/* GAMEBOARD SECTION */
 
 .gameboard__view { 
   width: 5vw;

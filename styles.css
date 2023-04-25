@@ -63,6 +63,10 @@ h2.choose {
   cursor: pointer;
 }
 
+h3, p {
+  margin: 0;
+}
+
 .buttons__difficult {
   margin-top: 40px;
 }

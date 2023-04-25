@@ -195,18 +195,7 @@ function displayMatch(element) {
   determineMatch();
   updateWinnerScore();
   updateHeader();
-  var selectedFighter = [];
-  selectedFighter.push(element.target);
-  for (var i=0; i < fighterAttributes.length; i++) {
-    if (computer.fighter === fighterAttributes[i].alt) {
-      selectedFighter.push(fighterAttributes[i]);
-    }
-  }
-  gameboardSection.innerHTML = `
-  <section class="gameboard__classic">
-    <img alt="${selectedFighter[0].alt}" src ="${selectedFighter[0].src}" class="fighter">
-    <img alt="${selectedFighter[1].alt}" src ="${selectedFighter[1].src}" class="fighter">
-  </section>`
+  updateFighter(element);
 }
 
 function updateWinnerScore() {
@@ -227,4 +216,19 @@ function updateHeader() {
   } else {
     choiceAndWinner.innerHTML = '💻 Computer won this Round! 💻'
   }
+}
+
+function updateFighter(element) {
+  var selectedFighter = [];
+  selectedFighter.push(element.target);
+  for (var i=0; i < fighterAttributes.length; i++) {
+    if (computer.fighter === fighterAttributes[i].alt) {
+      selectedFighter.push(fighterAttributes[i]);
+    }
+  }
+  gameboardSection.innerHTML = `
+  <section class="gameboard__classic">
+    <img alt="${selectedFighter[0].alt}" src ="${selectedFighter[0].src}" class="fighter">
+    <img alt="${selectedFighter[1].alt}" src ="${selectedFighter[1].src}" class="fighter">
+  </section>`
 }

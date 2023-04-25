@@ -85,6 +85,14 @@ h3, p {
   overflow: hidden;
 }
 
+.human__header {
+  margin-top:0;
+}
+
+.human__token {
+  margin-bottom: 0;
+}
+
 .human__wins {
   font-size: 2.5em;
   margin-top: 0;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link href="./styles.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;600;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -9,7 +9,8 @@
   </head>
   <body>
     <section class="human">
-      <h2>🤠<br>Human </h2>
+      <h2 class="human__token">🤠</h2> 
+      <h2 class="human__name">Human</h2>
       <p class="human__wins"><i>Wins: 0</i></p>
       <button class="human__button hidden">CHANGE GAME?</button>
     </section>
@@ -17,15 +18,28 @@
       <h1>Rock, Paper, Scissors</h1>
       <h2 class="choose">Choose your game!</h2>
       <section class="buttons__view">
-        <button class="buttons__classic"><b>🪨 CLASSIC ✂️ </b><br>rock > scissors<br>paper > rock<br>scissors > paper</button>
-        <button class="buttons__difficult"><b>🦎 DIFFICULT 👽</b><br>rock > scissors & lizard<br>paper > rock & alien<br>scissors > paper & lizard<br>lizard > paper & alien<br>alien > scissors & rock</button>
+        <button class="buttons__classic">
+          <h3>🪨 CLASSIC ✂️ </h3>
+          <p>rock > scissors</p>
+          <p>paper > rock</p>
+          <p>scissors > paper</p>
+        </button>
+        <button class="buttons__difficult">
+          <h3>🦎 DIFFICULT 👽</h3>
+          <p>rock > scissors & lizard</p>
+          <p>paper > rock & alien</p>
+          <p>scissors > paper & lizard</p>
+          <p>lizard > paper & alien</p>
+          <p>alien > scissors & rock</p>
+        </button>
       </section>
       <section class="gameboard__view hidden ">
-        </section>
+        <!-- different gameboard types will appear here!  -->
       </section>
     </main>
     <section class="computer">
-      <h2>💻<br>Computer</h2>
+      <h2 class="computer__token">💻</h2>
+      <h2 class="computer__name">Computer</h2>
       <p class="computer__wins"><i>Wins: 0</i></p>
     </section>
     <script src="./main.js"></script>

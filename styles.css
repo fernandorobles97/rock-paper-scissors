@@ -54,6 +54,10 @@ h2.choose {
   justify-content: space-around;
 }
 
+button > * {
+  pointer-events: none;
+}
+
 .buttons__classic, .buttons__difficult {
   height: 10em;
   background-color: rgb(173, 50, 50);
@@ -61,6 +65,10 @@ h2.choose {
   font-weight: 300;
   border: 0;
   cursor: pointer;
+}
+
+h3, p {
+  margin: 0;
 }
 
 .buttons__difficult {
@@ -91,6 +99,14 @@ h2.choose {
   font-weight: 300;
   border: 0;
   cursor: pointer;
+}
+
+.human__name, .computer__name {
+  margin-top:0;
+}
+
+.human__token, .computer__token {
+  margin-bottom: 0;
 }
 
 .computer {

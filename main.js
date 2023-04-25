@@ -47,7 +47,7 @@ changeButton.addEventListener('click', switchHomeView);
 
 buttonsSection.addEventListener('click', function(event) {
   if (event.target.classList.contains('buttons__classic') || event.target.classList.contains('buttons__difficult')) {
-    displayGame(event.target);
+    displayGame(event);
   }
 });
 
@@ -90,16 +90,6 @@ function computerTurn(fighters) {
   var random = fighters[getRandomIndex(fighters)];
   computer.fighter = random;
   return computer.fighter;
-}
-
-function displayGame(element) {
-  if (element.classList.contains('buttons__classic')) {
-    createGame(human, computer, classicFighters, classicLogic);
-    displayClassicFighters();
-  } else {
-    createGame(human, computer, difficultFighters, difficultLogic);
-    displayDifficultFighters();
-  }
 }
 
 function determineClassicWinner(player, computer) {
@@ -176,11 +166,13 @@ function displayDifficultFighters() {
     </div>`
 }
 
-function determineMatch() {
-  if (game.gameType === classicLogic) {
-    return winner = determineClassicWinner(human, computer)
+function displayGame(element) {
+  if (element.target.classList.contains('buttons__classic')) {
+    createGame(human, computer, classicFighters, classicLogic);
+    displayClassicFighters();
   } else {
-    return winner = determineDifficultWinner(human, computer)
+    createGame(human, computer, difficultFighters, difficultLogic);
+    displayDifficultFighters();
   }
 }
 
@@ -195,18 +187,15 @@ function displayMatch(element) {
   determineMatch();
   updateWinnerScore();
   updateHeader();
-  var selectedFighter = [];
-  selectedFighter.push(element.target);
-  for (var i=0; i < fighterAttributes.length; i++) {
-    if (computer.fighter === fighterAttributes[i].alt) {
-      selectedFighter.push(fighterAttributes[i]);
-    }
+  updateFighter(element);
+}
+
+function determineMatch() {
+  if (game.gameType === classicLogic) {
+    return winner = determineClassicWinner(human, computer)
+  } else {
+    return winner = determineDifficultWinner(human, computer)
   }
-  gameboardSection.innerHTML = `
-  <section class="gameboard__classic">
-    <img alt="${selectedFighter[0].alt}" src ="${selectedFighter[0].src}" class="fighter">
-    <img alt="${selectedFighter[1].alt}" src ="${selectedFighter[1].src}" class="fighter">
-  </section>`
 }
 
 function updateWinnerScore() {
@@ -227,4 +216,19 @@ function updateHeader() {
   } else {
     choiceAndWinner.innerHTML = '💻 Computer won this Round! 💻'
   }
+}
+
+function updateFighter(element) {
+  var selectedFighter = [];
+  selectedFighter.push(element.target);
+  for (var i=0; i < fighterAttributes.length; i++) {
+    if (computer.fighter === fighterAttributes[i].alt) {
+      selectedFighter.push(fighterAttributes[i]);
+    }
+  }
+  gameboardSection.innerHTML = `
+  <section class="gameboard__classic">
+    <img alt="${selectedFighter[0].alt}" src ="${selectedFighter[0].src}" class="fighter">
+    <img alt="${selectedFighter[1].alt}" src ="${selectedFighter[1].src}" class="fighter">
+  </section>`
 }

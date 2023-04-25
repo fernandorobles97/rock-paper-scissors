@@ -92,16 +92,6 @@ function computerTurn(fighters) {
   return computer.fighter;
 }
 
-function displayGame(element) {
-  if (element.classList.contains('buttons__classic')) {
-    createGame(human, computer, classicFighters, classicLogic);
-    displayClassicFighters();
-  } else {
-    createGame(human, computer, difficultFighters, difficultLogic);
-    displayDifficultFighters();
-  }
-}
-
 function determineClassicWinner(player, computer) {
   var hum = player.fighter;
   var com = computerTurn(classicFighters);
@@ -176,11 +166,13 @@ function displayDifficultFighters() {
     </div>`
 }
 
-function determineMatch() {
-  if (game.gameType === classicLogic) {
-    return winner = determineClassicWinner(human, computer)
+function displayGame(element) {
+  if (element.classList.contains('buttons__classic')) {
+    createGame(human, computer, classicFighters, classicLogic);
+    displayClassicFighters();
   } else {
-    return winner = determineDifficultWinner(human, computer)
+    createGame(human, computer, difficultFighters, difficultLogic);
+    displayDifficultFighters();
   }
 }
 
@@ -196,6 +188,14 @@ function displayMatch(element) {
   updateWinnerScore();
   updateHeader();
   updateFighter(element);
+}
+
+function determineMatch() {
+  if (game.gameType === classicLogic) {
+    return winner = determineClassicWinner(human, computer)
+  } else {
+    return winner = determineDifficultWinner(human, computer)
+  }
 }
 
 function updateWinnerScore() {

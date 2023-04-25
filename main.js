@@ -47,7 +47,7 @@ changeButton.addEventListener('click', switchHomeView);
 
 buttonsSection.addEventListener('click', function(event) {
   if (event.target.classList.contains('buttons__classic') || event.target.classList.contains('buttons__difficult')) {
-    displayGame(event.target);
+    displayGame(event);
   }
 });
 
@@ -167,7 +167,7 @@ function displayDifficultFighters() {
 }
 
 function displayGame(element) {
-  if (element.classList.contains('buttons__classic')) {
+  if (element.target.classList.contains('buttons__classic')) {
     createGame(human, computer, classicFighters, classicLogic);
     displayClassicFighters();
   } else {

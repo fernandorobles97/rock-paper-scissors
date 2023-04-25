@@ -15,7 +15,7 @@ var classicLogic = {
 var difficultLogic = {
   rock: ['scissors', 'lizard'],
   paper: ['rock', 'alien'],
-  scissors: ['rock', 'alien'],
+  scissors: ['paper', 'lizard'],
   lizard: ['paper', 'alien'],
   alien: ['scissors', 'rock']
 };
@@ -33,6 +33,8 @@ var changeButton = document.querySelector('.human__button')
 var gameboardSection = document.querySelector('.gameboard__view')
 var buttonsSection = document.querySelector('.buttons__view')
 var choiceAndWinner = document.querySelector('.choose')
+var humanWins = document.querySelector('.human__wins')
+var computerWins = document.querySelector('.computer__wins')
 
 // ** EVENT LISTENERS ** //
 changeButton.addEventListener('click', switchHomeView);
@@ -183,6 +185,8 @@ function displayMatch(element) {
     takeTurn(difficultFighters, element.target.alt);
   }
   determineMatch();
+  updateWinnerScore();
+  updateHeader();
   var selectedFighter = [];
   selectedFighter.push(element.target);
   for (var i=0; i < fighterAttributes.length; i++) {
@@ -195,4 +199,24 @@ function displayMatch(element) {
     <img alt="${selectedFighter[0].alt}" src ="${selectedFighter[0].src}" class="fighter">
     <img alt="${selectedFighter[1].alt}" src ="${selectedFighter[1].src}" class="fighter">
   </section>`
+}
+
+function updateWinnerScore() {
+  if (winner === human) {
+    humanScore += 1;
+    humanWins.innerHTML = `<i>Wins: ${humanScore}</i>`
+  } else if (winner === computer) {
+    computerScore += 1;
+    computerWins.innerHTML = `<i>Wins: ${computerScore}</i>`
+  } 
+}
+
+function updateHeader() {
+  if (winner === `It\'s a draw`) {
+    choiceAndWinner.innerHTML = 'It\'s a draw!'
+  } else if (winner === human) {
+    choiceAndWinner.innerHTML = '🤠 Human won this Round! 🤠'
+  } else {
+    choiceAndWinner.innerHTML = '💻 Computer won this Round! 💻'
+  }
 }

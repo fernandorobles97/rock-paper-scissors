@@ -54,6 +54,10 @@ h2.choose {
   justify-content: space-around;
 }
 
+button > * {
+  pointer-events: none;
+}
+
 .buttons__classic, .buttons__difficult {
   height: 10em;
   background-color: rgb(173, 50, 50);
